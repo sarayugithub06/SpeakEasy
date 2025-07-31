@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakEasy</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FIX: Firebase Global Imports - Placed in HEAD for guaranteed loading order -->
+    <!-- These scripts make 'firebase' global object available -->
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js"></script>
+
+    <!-- Link to external CSS file -->
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Full-screen AI Background Container - now handles dynamic gradient -->
+<div id="aiBackgroundContainer" class="ai-background-container">
+    <!-- No <img> tag here anymore -->
+</div>
+
+<!-- Captions Overlay -->
+<div id="captionsOverlay" class="captions-overlay">
+    <div class="caption-item">Tutor: <strong id="captionAiName">Sarah</strong></div>
+    <div class="caption-item">Level: <strong id="captionLevel">Beginner</strong></div>
+    <div class="caption-item">Situation: <strong id="captionSituation">General Practice</strong></div>
+    <div class="caption-item">Status: <span id="captionStatus">Click 'Start Speaking' to begin.</span></div>
+    <div class="dialogue-caption ai-dialogue" id="aiSpeechCaption"></div>
+    <div class="dialogue-caption user-dialogue" id="userSpeechCaption"></div>
+</div>
+
+<div class="main-content-wrapper">
+    <div class="container">
+        <div class="header">
+            <h1>SpeakEasy</h1>
+            <p class="text-gray-600">Your personal guide to English fluency!</p>
+        </div>
+
+        <div class="user-name-input-group">
+            <label for="userNameInput">Your Name:</label>
+            <input type="text" id="userNameInput" placeholder="Enter your name" value="">
+        </div>
+
+        <div class="persona-input-group">
+            <label for="aiNameInput">Tutor's Name:</label>
+            <input type="text" id="aiNameInput" placeholder="e.g., Alex, Sarah, SpeakEasy" value="Sarah">
+        </div>
+
+        <div class="persona-selection">
+            <button id="femaleAiBtn" class="persona-button active" data-gender="female">Female AI</button>
+            <button id="maleAiBtn" class="persona-button" data-gender="male">Male AI</button>
+        </div>
+
+        <div class="situation-input-group">
+            <label for="situationSelect">Practice Situation:</label>
+            <select id="situationSelect">
+                <option value="General Practice">General Practice</option>
+                <option value="Job Interview">Job Interview</option>
+                <option value="Making Friends">Making Friends</option>
+                <option value="Travel">Travel</option>
+                <option value="Giving a Presentation">Giving a Presentation</option>
+            </select>
+        </div>
+
+        <div class="level-selection">
+            <button id="beginnerBtn" class="level-button active" data-level="beginner">Beginner</button>
+            <button id="intermediateBtn" class="level-button" data-level="intermediate">Intermediate</button>
+            <button id="advancedBtn" class="level-button" data-level="advanced">Advanced</button>
+                </select>
+        </div>
+
+
+        <div class="controls">
+            <button id="startBtn" class="control-button start">
+                <span id="startIcon">🎤</span> Start Speaking
+            </button>
+            <button id="stopBtn" class="control-button stop" disabled>
+                <span id="stopIcon">⏹️</span> Stop Speaking
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Message Box -->
+<div id="messageBoxOverlay" class="message-box-overlay">
+    <div class="message-box">
+        <h3 id="messageBoxTitle"></h3>
+        <p id="messageBoxContent"></p>
+        <button id="messageBoxCloseBtn">OK</button>
+    </div>
+</div>
+
+<!-- FIX: Link to external JavaScript file - Load at the END of <body> -->
+<!-- Removed type="module" as we are accessing Firebase globally -->
+<script src="script.js"></script>
+</body>
+</html>
