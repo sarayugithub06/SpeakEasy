@@ -8,7 +8,6 @@ The application can act as:
 - 👩‍🏫 A personal language coach
 - 🎯 A pronunciation trainer
 - 🗣️ A grammar corrector
-- 🎮 A gamified language-learning assistant
 
 It’s perfect for **students, job seekers, and professionals** who want to speak more confidently and correctly in English.
 
